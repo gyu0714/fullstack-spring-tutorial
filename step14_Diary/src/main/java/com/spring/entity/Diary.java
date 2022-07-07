@@ -52,7 +52,7 @@ public class Diary implements Persistable<Long> {
 							.no(diaryEntity.getNo())
 							.title(diaryEntity.getTitle())
 							.content(diaryEntity.getTitle())
-							.writtenTime(diaryEntity.getWrittenTime())
+							.writtenTime(diaryEntity.getWrittenTime() )
 							.build();
 		return diaryDTO;
 	}

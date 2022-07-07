@@ -125,7 +125,16 @@ public class DiaryRestController {
 	@GetMapping("/diary")
 	public void getDiary(PageRequestDTO pageReuqestDTO) {
 		System.out.println(pageReuqestDTO);
-//		pageReuqestDTO.getPageable();
+		
+		
+		PageResultDTO<DiaryDTO, Diary> pageResultDTO = diaryService.getList(pageReuqestDTO);
+		System.out.println(pageResultDTO.getPageList());
+		System.out.println(pageResultDTO.getDtoList());
+		System.out.println(pageResultDTO.getTotalPage());
+		System.out.println(pageResultDTO.isNext());
+		System.out.println(pageResultDTO.isPrev());
+		System.out.println(pageResultDTO.getStart());
+		System.out.println(pageResultDTO.getEnd());
 	}
 	
 	
