@@ -1,5 +1,7 @@
 package com.spring.dto;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Id;
 
 import com.spring.entity.Diary;
@@ -21,6 +23,8 @@ public class DiaryDTO {
 	private String title;
 	
 	private String content;
+	
+	private LocalDateTime writtenTime;
 	
 	public Diary diaryToEntity(DiaryDTO diaryDTO) {
 		Diary diaryEntity = Diary.builder()
