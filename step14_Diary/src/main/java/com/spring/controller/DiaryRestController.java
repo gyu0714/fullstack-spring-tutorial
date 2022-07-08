@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.dto.DiaryDTO;
@@ -23,6 +24,7 @@ import com.spring.service.DiaryServiceImpl;
 
 
 @RestController
+@RequestMapping("/api")
 // 생성자 주입
 //@RequiredArgsConstructor // fianl이 붙거나 @NotNull이 붙은 필드(멤버변수)의 생성자를 자동 생성하는 어노테이션
 public class DiaryRestController {
@@ -123,18 +125,11 @@ public class DiaryRestController {
 	}
 	
 	@GetMapping("/diary")
-	public void getDiary(PageRequestDTO pageReuqestDTO) {
-		System.out.println(pageReuqestDTO);
-		
-		
+	public PageResultDTO<DiaryDTO, Diary> getDiary(PageRequestDTO pageReuqestDTO) {
 		PageResultDTO<DiaryDTO, Diary> pageResultDTO = diaryService.getList(pageReuqestDTO);
-		System.out.println(pageResultDTO.getPageList());
-		System.out.println(pageResultDTO.getDtoList());
-		System.out.println(pageResultDTO.getTotalPage());
-		System.out.println(pageResultDTO.isNext());
-		System.out.println(pageResultDTO.isPrev());
-		System.out.println(pageResultDTO.getStart());
-		System.out.println(pageResultDTO.getEnd());
+		
+		return pageResultDTO;
+		
 	}
 	
 	
