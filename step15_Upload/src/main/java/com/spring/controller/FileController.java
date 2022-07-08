@@ -119,7 +119,7 @@ public class FileController {
 	@GetMapping("/file-download/{id}")
 	public void downloadFile(@PathVariable Long id, HttpServletResponse response) throws FileNotFoundException{
 		FileEntity file = fileRepository.findById(id).get();
-		
+		response.setHeader("Content-Disposition", "attachment;filename=\""+file.getFileName()+"\";");
 		FileInputStream fis = new FileInputStream(file.getFilePath());
 		try {
 			OutputStream os = response.getOutputStream();
